@@ -4,13 +4,15 @@ on:
   push:
     branches:
       - develop
-      - '**/dev'  # Ex: feature/nova-funcionalidade/dev
+      - '**/dev'
 
 jobs:
   acknowledge-push:
-    name: 📦 Detecção de push em */dev ou develop
+    name: Detecção de push em branches de desenvolvimento
     runs-on: self-hosted
 
     steps:
-      - name: ✅ Runner ativo e evento detectado
-        run: echo "Push recebido na branch: ${{ github.ref_name }}. Runner está funcional."
+      - name: Runner ativo e evento detectado
+        run: |
+          echo "Branch recebida:"
+          echo "${GITHUB_REF_NAME}"
